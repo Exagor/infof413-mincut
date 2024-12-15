@@ -1,16 +1,15 @@
-CC=gcc
-CFLAGS=-O3 -Wall
-LDFLAGS = -lm
+CC= g++
+CFLAGS= -O3 -Wall -std=c++17
 
-OBJECTS= src/utilities.o src/main.o src/quicksort.o src/selection.o
+OBJECTS= src/main.o
 
 .PHONY: clean
 
-all: selection
+all: compile
 	./main
 
-selection: $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LDFLAGS) -o main
+compile: $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o main
 
 clean:
 	rm -f src/*.o main
