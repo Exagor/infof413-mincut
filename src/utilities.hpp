@@ -1,9 +1,12 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
 
+#include "Graph.hpp"
 #include <vector>
 #include <string>
 
-vector<vector<int>> readAdjlist(string filename);
+using namespace std;
+
+void readAdjMatrix(Graph& graph, const string& filename);
 
 #endif

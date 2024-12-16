@@ -1,11 +1,15 @@
-#include "src/utilities.hpp"
-#include "src/graphs.hpp"
+#include "utilities.hpp"
+#include "Graph.hpp"
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 int main() {
-    cout << "Hello, World!" << endl;
+    string filename = "graph_data/random_graph_adjmatrix.txt";
+    Graph* graph = new Graph(15);
+    readAdjMatrix(*graph, filename);
+    graph->printGraph();
+
+    delete graph;
     return 0;
 }

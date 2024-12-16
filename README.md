@@ -2,7 +2,14 @@
 
 Alexandre Achten, December 2024
 
-## dad
+## Experimentation
+
+Different [graph families](https://en.wikipedia.org/wiki/List_of_graphs) are tested with the algorithm. The families are listed here :
+
+- Barbell graphs : To see how the algorithm handles bottleneck graphs
+- Random graphs : Generated with Erdos Renyi model
+- Turan graphs : Graphs with a lot of edges
+- Complete graphs : Graphs where every vertices are connected to each other
 
 ### Sources
 
