@@ -1,5 +1,5 @@
 CC= g++
-CFLAGS= -O3 -Wall
+CFLAGS= -O3 -Wall -std=c++17
 
 OBJECTS= src/utilities.o src/Graph.o src/main.o 
 

@@ -13,7 +13,7 @@ void readAdjMatrix(Graph& graph, const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
         cerr << "Error opening file: " << filename << endl;
-        return;
+        exit(1);
     }
 
     string line;
@@ -64,4 +64,10 @@ void readAdjMatrix(Graph& graph, const string& filename) {
     } while (getline(file, line));
 
     file.close();
+}
+
+void writeResults(const string& filename, Graph& graph) {
+    ofstream file(filename);
+    
+    
 }
