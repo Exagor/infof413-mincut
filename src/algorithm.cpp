@@ -86,10 +86,14 @@ int fastCut(Graph& graph) {
     }
     else{
         int t = ceil(1 + n/sqrt(2));
-        Graph H1 = graph;
-        Graph H2 = graph;
-        contractAlgorithm(H1, t);
-        contractAlgorithm(H2, t);
-        return min(fastCut(H1), fastCut(H2));
+        Graph originalGraph = graph; //Save the original graph to avoid copying it again
+        contractAlgorithm(graph, t);
+        int cutVal1 = fastCut(graph);
+
+        graph = originalGraph;
+        contractAlgorithm(graph, t);
+        int cutVal2 = fastCut(graph);
+
+        return min(cutVal1, cutVal2);
     }
 }

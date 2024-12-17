@@ -57,7 +57,7 @@ void readAdjMatrix(Graph& graph, const string& filename) {
     file.close();
 }
 
-void writeResults(const string& filename, int size, const vector<int>& results, const vector<double>& times) {
+void writeResults1(const string& filename, int size, const vector<int>& results, const vector<double>& times) {
     ofstream file;
     // Extract family from filename
     regex re("\\D+");
@@ -93,4 +93,43 @@ void writeResults(const string& filename, int size, const vector<int>& results, 
     } else {
         cerr << "Unable to open file: " << "results/" + family + ".csv" << endl;
     }
+}
+
+void writeResults2(const string& filename, int size, const string& algoName, int mincut, const vector<int>& results, double time){
+    ofstream file;
+    // Extract family from filename
+    regex re("\\D+");
+    smatch match;
+    string family;
+    if (regex_search(filename, match, re)) {
+        family = match.str(0);
+    }
+    // Remove everything before the last "/"
+    size_t pos = family.find_last_of('/');
+    if (pos != string::npos) {
+        family = family.substr(pos + 1);
+    }
+    // Remove the last character of family string
+    if (!family.empty()) {
+        family.pop_back();
+    }
+
+    file.open("results/" + family + "_" + to_string(int(time)) + ".csv", ios::app); // Open file in append mode
+    
+    if (file.is_open()) {
+        // Write the CSV row
+        for (int i = 0; i < results.size(); i++) {
+            file << family << ","
+                 << size << ","
+                 << algoName << ","
+                 << results[i] << ","
+                 << time << ","
+                 << (mincut == results[i] ? 1 : 0) << "\n";
+        }
+        file.close();
+    } else {
+        cerr << "Unable to open file: " << "results/" + family + ".csv" << endl;
+    }
+
+
 }

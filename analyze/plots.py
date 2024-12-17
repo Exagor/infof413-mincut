@@ -12,10 +12,7 @@ def plot_time_complexity(dfs:list[pd.DataFrame], graph_families:list[str], save=
     # generate x and y values for n^2 log n
     x_values = np.linspace(min(df['size']), max(df['size']), 500)
     y_values = x_values**2 * np.log(x_values)
-    plt.plot(x_values, y_values/1000, label=r'$n^2$ log n', color='red', linestyle="--")
-    x2_values = x_values
-    y2_values = x2_values**3
-    plt.plot(x2_values, y2_values/1000, label=r'$n^3$', color='black', linestyle="--")
+    plt.plot(x_values, y_values/100, label=r'$\frac{1}{100}n^2 \log{n}$', color='red', linestyle="--")
 
     plt.xlabel('Number of vertices (n)')
     plt.ylabel('Time (ms)')
@@ -56,6 +53,7 @@ results_filename = ["results/barbell_graph.csv", "results/complete_graph.csv", "
 graph_families = ['Barbell', 'Complete', 'Random', 'Random Weighted']
 dataframes = [pd.read_csv(filename) for filename in results_filename]
 save = True
+
 plot_time_complexity(dataframes, graph_families,save)
 
 plot_sucess_probability(dataframes[0], 'barbell graph', save)

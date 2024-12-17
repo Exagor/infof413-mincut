@@ -29,5 +29,17 @@ void readAdjMatrix(Graph& graph, const string& filename);
  * @param results The results of the experiments
  * @param time The time taken for each experiment
  */
-void writeResults(const string& filename, int size, const vector<int>& results, const vector<double>& times);
+void writeResults1(const string& filename, int size, const vector<int>& results, const vector<double>& times);
+
+/**
+ * @brief Write the results of the experiments to a file (but for different experiments)
+ * @param filename The filename
+ * @param size The size of the graph
+ * @param algoName The name of the algorithm
+ * @param mincut The mincut value
+ * @param results The results of the experiments
+ * @param time The time taken for each experiment
+ * 
+ */
+void writeResults2(const string& filename, int size, const string& algoName, int mincut, const vector<int>& results, double time);
 #endif
