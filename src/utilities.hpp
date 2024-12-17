@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <regex>
 
 using namespace std;
 
@@ -22,4 +23,11 @@ using namespace std;
  */
 void readAdjMatrix(Graph& graph, const string& filename);
 
+/**
+ * @brief Write the results of the experiments to a file
+ * @param filename The filename
+ * @param results The results of the experiments
+ * @param time The time taken for each experiment
+ */
+void writeResults(const string& filename, int size, const vector<int>& results, const vector<double>& times);
 #endif

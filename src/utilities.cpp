@@ -1,7 +1,5 @@
 #include "utilities.hpp"
 
-using namespace std;
-
 void readAdjMatrix(Graph& graph, const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
@@ -59,8 +57,40 @@ void readAdjMatrix(Graph& graph, const string& filename) {
     file.close();
 }
 
-void writeResults(const string& filename, Graph& graph) {
-    ofstream file(filename);
-    
-    
+void writeResults(const string& filename, int size, const vector<int>& results, const vector<double>& times) {
+    ofstream file;
+    // Extract family from filename
+    regex re("\\D+");
+    smatch match;
+    string family;
+    if (regex_search(filename, match, re)) {
+        family = match.str(0);
+    }
+    // Remove everything before the last "/"
+    size_t pos = family.find_last_of('/');
+    if (pos != string::npos) {
+        family = family.substr(pos + 1);
+    }
+    // Remove the last character of family string
+    if (!family.empty()) {
+        family.pop_back();
+    }
+    file.open("results/" + family + ".csv", ios::app); // Open file in append mode
+
+    if (file.is_open()) {
+        // Write the CSV row
+        file << family << ","
+             << size << ","
+             << results[0] << ","
+             << results[1] << ","
+             << results[2] << ","
+             << times[0] << ","
+             << times[1] << ","
+             << (results[0] == results[1] ? 1 : 0) << ","
+             << (results[0] == results[2] ? 1 : 0) << "\n";
+
+        file.close();
+    } else {
+        cerr << "Unable to open file: " << "results/" + family + ".csv" << endl;
+    }
 }
