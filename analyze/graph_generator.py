@@ -4,6 +4,7 @@ import numpy as np
 import random
 
 random.seed(42)
+
 def visualize_graph(G):
     """
     Simple vizualisation of the graph with Networkx
@@ -34,17 +35,13 @@ def calculate_mincut(G):
     min_cut = nx.stoer_wagner(G)
     return min_cut
 
-
-
-def generate_graphs_size_n(n=20,plot=False):
+def generate_graphs_size_n(n=20, plot=False):
     """
     Function to generate graphs of size n
     """
 
     G = nx.barbell_graph(int(n/2), 0)
     save_graph_as_matrix(G, f"barbell_graph_{n}")
-    G2 = nx.turan_graph(n, 3)
-    save_graph_as_matrix(G2, f"turan_graph_{n}")
     G3 = nx.complete_graph(n)
     save_graph_as_matrix(G3, f"complete_graph_{n}")
     G4 = nx.fast_gnp_random_graph(n, 0.8, seed=42)
@@ -56,13 +53,12 @@ def generate_graphs_size_n(n=20,plot=False):
 
     def plot_all_graphs():
         visualize_graph(G)
-        visualize_graph(G2)
         visualize_graph(G3)
         visualize_graph(G4)
         visualize_graph(G5)
     if plot:
         plot_all_graphs()
 
-sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-for size in [10]:
-    generate_graphs_size_n(size, plot=True)
+sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
+for size in sizes:
+    generate_graphs_size_n(size, plot=False)
