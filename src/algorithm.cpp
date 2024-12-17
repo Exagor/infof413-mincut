@@ -60,9 +60,9 @@ int bruteForceMinCut(Graph& graph) {
 }
 
 
-int contractAlgorithm(Graph& graph) {
+int contractAlgorithm(Graph& graph, int t) {
     int vertices = graph.getVertices();
-    while (vertices > 2) {
+    while (vertices > t) {// until t vertices left (default t=2)
         Edge edge = chooseRandomEdge(graph);
         graph.contract(edge.u, edge.v); //inside the number of vertices is decremented
         vertices--; //nb of vertices is decremented for the loop (can access the number of vertices)
@@ -81,15 +81,15 @@ int contractAlgorithm(Graph& graph) {
 
 int fastCut(Graph& graph) {
     int n = graph.getVertices();
-    //TODO: finish the fast cut algorithm
-    while (n > 6) { // until 6 vertices left
-        int t = ceil(1+ n/sqrt(2));
-        int u = 0;
-        int v = 0;
-        graph.contract(u, v);
-        n--;
+    if(n <= 6) { // if the number of vertices is less than 6
+        return bruteForceMinCut(graph);
     }
-    // compute mincut by brute force
-    int minCut = bruteForceMinCut(graph);
-    return minCut;
+    else{
+        int t = ceil(1 + n/sqrt(2));
+        Graph H1 = graph;
+        Graph H2 = graph;
+        contractAlgorithm(H1, t);
+        contractAlgorithm(H2, t);
+        return min(fastCut(H1), fastCut(H2));
+    }
 }

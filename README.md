@@ -20,3 +20,5 @@ Different datasets :
 [SNAP](https://snap.stanford.edu/data/)
 
 To generate graphs in python with the [NetworkX library](https://networkx.org/)
+
+Kargers algorithm on [this site](https://en.wikipedia.org/wiki/Karger%27s_algorithm)
