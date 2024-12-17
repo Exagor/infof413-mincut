@@ -59,6 +59,6 @@ def generate_graphs_size_n(n=20, plot=False):
     if plot:
         plot_all_graphs()
 
-sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
+sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 for size in sizes:
     generate_graphs_size_n(size, plot=False)

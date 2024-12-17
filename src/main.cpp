@@ -87,13 +87,13 @@ int main(int argc, char* argv[]) {
     srand(42); //set the seed for the random number generator
     vector<string> filenames = {"random_graph_","random_weighted_graph_", "barbell_graph_","complete_graph_"};
     // vector<string> filenames = {"random_graph_"};
-    vector<int> verticesVector = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150};
+    vector<int> verticesVector = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     // Loop to experiment with all the files of all sizes
     for (string filenameOG: filenames){
         for (int vertices: verticesVector){
             // create the right filename
             string filename = "graph_data/" + filenameOG + to_string(vertices) + "_matrix.txt";
-            // experimentsFixedIter(vertices, filename, iterMax);
+            experimentsFixedIter(vertices, filename, iterMax);
             experimentsFixedTime(vertices, filename, timeBudget);
         }
     }
