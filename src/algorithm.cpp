@@ -1,8 +1,4 @@
 #include "algorithm.hpp"
-#include <cmath>
-#include <vector>
-
-using namespace std;
 
 Edge chooseRandomEdge(Graph& graph) {
     vector<Edge> edges;
@@ -88,12 +84,8 @@ int fastCut(Graph& graph) {
     //TODO: finish the fast cut algorithm
     while (n > 6) { // until 6 vertices left
         int t = ceil(1+ n/sqrt(2));
-        int u = rand() % n;
-        int v = rand() % n;
-        while (graph.adjMatrix[u][v] == 0) { //Can be a bottleneck TODO: verify this
-            u = rand() % n;
-            v = rand() % n;
-        }
+        int u = 0;
+        int v = 0;
         graph.contract(u, v);
         n--;
     }

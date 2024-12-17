@@ -2,6 +2,8 @@
 #define ALGORITHM_HPP
 
 #include "Graph.hpp"
+#include <cmath>
+#include <vector>
 
 using namespace std;
 
@@ -12,7 +14,7 @@ struct Edge {
 /*
 * @brief Assure to choose a random edge from the graph poderated by its weight
 * @param graph The graph
-* @return The random edge
+* @return The random edge (struct Edge)
 */
 Edge chooseRandomEdge(Graph& graph);
 /*
