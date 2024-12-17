@@ -1,5 +1,6 @@
-#include "utilities.hpp"
 #include "Graph.hpp"
+#include "utilities.hpp"
+#include "algorithm.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -18,7 +19,7 @@ int main() {
 
         int mincut = graph -> getMinCut();
         cout << "Min cut = "<< mincut << endl;
-        int mincut_contract = graph -> contractAlgorithm();
+        int mincut_contract = contractAlgorithm(*graph);
         cout << "Min cut contract = "<< mincut_contract << endl;
         delete graph;
     }

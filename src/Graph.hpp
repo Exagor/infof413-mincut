@@ -13,6 +13,7 @@ using namespace std;
  */
 class Graph {
 public:
+    vector<vector<int>> adjMatrix;
     Graph(int vertices); //Creates empty graph with vertices
     /*
     * @brief Add an edge to the graph
@@ -40,26 +41,15 @@ public:
     */
     void contract(int u, int v);
     /*
-    * @brief Contract the graph until only two vertices remain (simple kargers algorithm)
-    * @return The minimum cut value
-    */
-    int contractAlgorithm();
-    /*
-    * @brief Implementation of the fast cut algorithm
-    * @return The minimum cut value
-    */
-    int fastCut();
-    /*
     * @brief Print the graph in the standard output in adjacency matrix form
     */
-    void printGraph();
+    void printGraph() const;
 
 private:
     int vertices;
     int mincut;
     set<int> subsetCut1;
     set<int> subsetCut2;
-    vector<vector<int>> adjMatrix;
 };
 
 #endif //GRAPH_HPP

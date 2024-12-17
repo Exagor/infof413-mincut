@@ -1,7 +1,7 @@
 CC= g++
 CFLAGS= -O3 -Wall -std=c++17
 
-OBJECTS= src/utilities.o src/Graph.o src/main.o 
+OBJECTS= src/utilities.o src/Graph.o src/algorithm.o src/main.o 
 
 .PHONY: clean
 
