@@ -46,10 +46,10 @@ void experimentsAlgoMinCut(int vertices, string filename, int iterations=50) {
 
 int main(int argc, char* argv[]) {
     srand(42); //set the seed for the random number generator
-    vector<string> filenames = {"random_graph_","random_weighted_graph_", "barbell_graph_","complete_graph_","turan_graph_"};
-    vector<int> verticesVector = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-    // vector<string> filenames = {"random_graph_"};
-    // vector<int> verticesVector = {10, 20, 30, 40, 50};
+    // vector<string> filenames = {"random_graph_","random_weighted_graph_", "barbell_graph_","complete_graph_","turan_graph_"};
+    // vector<int> verticesVector = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150};
+    vector<string> filenames = {"random_graph_"};
+    vector<int> verticesVector = {10, 20, 30, 40, 50};
     // Loop to experiment with all the files of all sizes
     for (string filenameOG: filenames){
         for (int vertices: verticesVector){

@@ -38,6 +38,4 @@ int contractAlgorithm(Graph& graph, int t=2);
 */
 int fastCut(Graph& graph);
 
-
-
 #endif // ALGORITHM_HPP
