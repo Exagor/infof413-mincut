@@ -1,3 +1,4 @@
+family,size,algo,mincut,time,success
 random_weighted_graph,10,contract,30,100,0
 random_weighted_graph,10,contract,27,100,0
 random_weighted_graph,10,contract,33,100,0

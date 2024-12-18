@@ -1,3 +1,4 @@
+family,size,algo,mincut,time,success
 barbell_graph,10,contract,4,1000,0
 barbell_graph,10,contract,1,1000,1
 barbell_graph,10,contract,4,1000,0

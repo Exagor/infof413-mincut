@@ -1,3 +1,4 @@
+family,size,algo,mincut,time,success
 complete_graph,10,contract,9,100,1
 complete_graph,10,contract,9,100,1
 complete_graph,10,contract,16,100,0
