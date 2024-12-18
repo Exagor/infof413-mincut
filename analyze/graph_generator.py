@@ -5,7 +5,7 @@ import random
 
 random.seed(42)
 
-def visualize_graph(G):
+def visualize_graph(G, name=" ", save=False):
     """
     Simple vizualisation of the graph with Networkx
     """
@@ -13,6 +13,8 @@ def visualize_graph(G):
     nx.draw(G, pos, with_labels=True)
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+    if save:
+        plt.savefig(f'figs/{name}_{G.number_of_nodes()}.png',dpi=200)
     plt.show()
 
 def save_graph_as_matrix(G, file_name: str):
@@ -59,6 +61,7 @@ def generate_graphs_size_n(n=20, plot=False):
     if plot:
         plot_all_graphs()
 
-sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-for size in sizes:
-    generate_graphs_size_n(size, plot=False)
+if __name__ == "__main__":
+    sizes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    for size in sizes:
+        generate_graphs_size_n(size, plot=False)
