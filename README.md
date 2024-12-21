@@ -8,8 +8,8 @@ Different [graph families](https://en.wikipedia.org/wiki/List_of_graphs) are tes
 
 - Barbell graphs : To see how the algorithm handles bottleneck graphs
 - Random graphs : Generated with Erdos Renyi model
-- Turan graphs : Graphs with a lot of edges
 - Complete graphs : Graphs where every vertices are connected to each other
+- 
 
 ### Sources
 

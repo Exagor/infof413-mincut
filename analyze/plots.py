@@ -98,11 +98,13 @@ def plot_success_probability_budget_time(dfs:list[pd.DataFrame], graph_families:
             # Filter to include only rows where algo is 'algo'
             df = df[df['algo'] == algo]
             plt.plot(df['size'], df['success'], label=graph_families[i], linestyle="-")
+
         if algo == 'fast':
             # generate x and y values for 1/log n
             x_values = np.linspace(min(df['size']), max(df['size']), 100)
             y_values = 1/np.log(x_values)
             plt.plot(x_values, y_values, label=r'$\frac{1}{\log{n}}$ ', color='red', linestyle="--")
+            
         if algo == 'contract':
             # generate x and y values for 1/n^2
             x_values = np.linspace(min(df['size']), max(df['size']), 100)
@@ -121,6 +123,8 @@ def plot_success_probability_budget_time(dfs:list[pd.DataFrame], graph_families:
 def plot_graphs(n=10):
     G = nx.barbell_graph(int(n/2), 0)
     visualize_graph(G, "barbell_graph", save=True)
+    G2 = nx.watts_strogatz_graph(n, 4, 0.5)
+    visualize_graph(G2, "watts_strogatz_graph", save=True)
     G3 = nx.complete_graph(n)
     visualize_graph(G3, "complete_graph", save=True)
     G4 = nx.fast_gnp_random_graph(n, 0.8, seed=42)
@@ -129,6 +133,8 @@ def plot_graphs(n=10):
     for (u, v) in G5.edges():
         G5.edges[u, v]['weight'] = random.randint(1, 10)
     visualize_graph(G5, "random_weighted_graph", save=True)
+    G6 = nx.barabasi_albert_graph(n, 3)
+    visualize_graph(G6, "barabasi_albert_graph", save=True)
 
 if __name__ == '__main__':
     results_filename = ["results/barbell_graph.csv", "results/complete_graph.csv", "results/random_graph.csv", "results/random_weighted_graph.csv"]
@@ -151,4 +157,3 @@ if __name__ == '__main__':
     dataframes = [pd.read_csv(filename) for filename in results_filename]
     plot_success_probability_budget_time(dataframes, graph_families, save)
     
-
