@@ -6,11 +6,12 @@ import networkx as nx
 import random
 
 def plot_time_complexity_fast(dfs:list[pd.DataFrame], graph_families:list[str], save=False):
+    plt.figure(figsize=(12, 8))
     for i, df in enumerate(dfs):
         #calculate average time for each size
         df = df.groupby('size').mean(numeric_only=True)
         df.reset_index(inplace=True)
-        plt.plot(df['size'], df['fastcut_time'], label=graph_families[i], linestyle="-")
+        plt.plot(df['size'], df['fastcut_time'], label=graph_families[i], linestyle="-", marker='o')
 
     # generate x and y values for n^2 log n
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
@@ -27,11 +28,12 @@ def plot_time_complexity_fast(dfs:list[pd.DataFrame], graph_families:list[str], 
     plt.show()
 
 def plot_time_complexity_contract(dfs:list[pd.DataFrame], graph_families:list[str], save=False):
+    plt.figure(figsize=(12, 8))
     for i, df in enumerate(dfs):
         #calculate average time for each size
         df = df.groupby('size').mean(numeric_only=True)
         df.reset_index(inplace=True)
-        plt.plot(df['size'], df['contract_time'], label=graph_families[i], linestyle="-")
+        plt.plot(df['size'], df['contract_time'], label=graph_families[i], linestyle="-", marker='o')
 
     # generate x and y values for n^2
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
@@ -48,11 +50,12 @@ def plot_time_complexity_contract(dfs:list[pd.DataFrame], graph_families:list[st
     plt.show()
 
 def plot_success_probability_fast(dfs:list[pd.DataFrame], graph_families:list[str], save=False):
+    plt.figure(figsize=(12, 8))
     for i, df in enumerate(dfs):
         #calculate average time for each size
         df = df.groupby('size').mean(numeric_only=True)
         df.reset_index(inplace=True)
-        plt.plot(df['size'], df['fastcut_success'], label=graph_families[i], linestyle="-")
+        plt.plot(df['size'], df['fastcut_success'], label=graph_families[i], linestyle="-", marker='o')
 
     # generate x and y values for 1/log n
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
@@ -69,11 +72,12 @@ def plot_success_probability_fast(dfs:list[pd.DataFrame], graph_families:list[st
     plt.show()
 
 def plot_success_probability_contract(dfs:list[pd.DataFrame], graph_families:list[str], save=False):
+    plt.figure(figsize=(12, 8))
     for i, df in enumerate(dfs):
         #calculate average time for each size
         df = df.groupby('size').mean(numeric_only=True)
         df.reset_index(inplace=True)
-        plt.plot(df['size'], df['contract_success'], label=graph_families[i], linestyle="-")
+        plt.plot(df['size'], df['contract_success'], label=graph_families[i], linestyle="-", marker='o')
 
     # generate x and y values for n^2
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
@@ -91,13 +95,14 @@ def plot_success_probability_contract(dfs:list[pd.DataFrame], graph_families:lis
 
 def plot_success_probability_budget_time(dfs:list[pd.DataFrame], graph_families:list[str], save=False):
     for algo in ['fast', 'contract']:
+        plt.figure(figsize=(12, 8))
         for i, df in enumerate(dfs):
             #calculate average time for each size
             df = df.groupby(['size', 'algo']).mean(numeric_only=True)
             df.reset_index(inplace=True)
             # Filter to include only rows where algo is 'algo'
             df = df[df['algo'] == algo]
-            plt.plot(df['size'], df['success'], label=graph_families[i], linestyle="-")
+            plt.plot(df['size'], df['success'], label=graph_families[i], linestyle="-", marker='o')
 
         if algo == 'fast':
             # generate x and y values for 1/log n
@@ -137,8 +142,18 @@ def plot_graphs(n=10):
     visualize_graph(G6, "barabasi_albert_graph", save=True)
 
 if __name__ == '__main__':
-    results_filename = ["results/barbell_graph.csv", "results/complete_graph.csv", "results/random_graph.csv", "results/random_weighted_graph.csv"]
-    graph_families = ['Barbell', 'Complete', 'Random', 'Random Weighted']
+    results_filename = ["results/barbell_graph.csv",
+                        "results/complete_graph.csv",
+                        "results/random_graph.csv",
+                        "results/random_weighted_graph.csv",
+                        "results/barabasi_albert_graph.csv",
+                        "results/watts_strogatz_graph.csv"]
+    graph_families = ['Barbell',
+                    'Complete',
+                    'Erdos Renyi',
+                    'Erdos Renyi Weighted',
+                    'Barabasi Albert',
+                    'Watts Strogatz']
     dataframes = [pd.read_csv(filename) for filename in results_filename]
     save = True
 
@@ -149,11 +164,13 @@ if __name__ == '__main__':
     # plot_graphs(10)
 
     #part with the budget time
-    time_budget = 500 #in milliseconds
+    time_budget = 1000 #in milliseconds
     results_filename = [f"results/barbell_graph_{time_budget}.csv",
                         f"results/complete_graph_{time_budget}.csv",
                         f"results/random_graph_{time_budget}.csv",
-                        f"results/random_weighted_graph_{time_budget}.csv"]
+                        f"results/random_weighted_graph_{time_budget}.csv",
+                        f"results/barabasi_albert_graph_{time_budget}.csv",
+                        f"results/watts_strogatz_graph_{time_budget}.csv"]
     dataframes = [pd.read_csv(filename) for filename in results_filename]
     plot_success_probability_budget_time(dataframes, graph_families, save)
     

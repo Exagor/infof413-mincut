@@ -44,7 +44,7 @@ def generate_graphs_size_n(n=20, plot=False):
 
     G = nx.barbell_graph(int(n/2), 0)
     save_graph_as_matrix(G, f"barbell_graph_{n}")
-    G2 = nx.watts_strogatz_graph(n, 4, 0.4)
+    G2 = nx.watts_strogatz_graph(n, 2*int(n/8), 0.4, seed=42)
     save_graph_as_matrix(G2, f"watts_strogatz_graph_{n}")
     G3 = nx.complete_graph(n)
     save_graph_as_matrix(G3, f"complete_graph_{n}")
@@ -54,7 +54,7 @@ def generate_graphs_size_n(n=20, plot=False):
     for (u, v) in G5.edges():
         G5.edges[u, v]['weight'] = random.randint(1, 10)
     save_graph_as_matrix(G5, f"random_weighted_graph_{n}")
-    G6 = nx.barabasi_albert_graph(n, 3)
+    G6 = nx.barabasi_albert_graph(n, int(n/2), seed=42)
     save_graph_as_matrix(G6, f"barabasi_albert_graph_{n}")
 
     def plot_all_graphs():

@@ -5,7 +5,7 @@ def create_csv_file(file_name, column_names):
         writer = csv.writer(file)
         writer.writerow(column_names)
 
-# init test with fixed iteration
+# init or empty the test files for fixed iteration
 file_names = ["random_graph",
             "random_weighted_graph",
             "barbell_graph",
@@ -16,7 +16,7 @@ column_names = ['family','size','mincut','contract','fastcut','contract_time','f
 for name in file_names:
     create_csv_file(f"results/{name}.csv", column_names)
 
-# init test with fixed time budget
+# init or empty the test files for fixed time budget
 time_budgets = [500, 1000, 2000]
 column_names = ['family','size','algo','mincut','time','success']
 for budget in time_budgets:
