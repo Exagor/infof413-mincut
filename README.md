@@ -2,23 +2,24 @@
 
 Alexandre Achten, December 2024
 
-## Experimentation
+## Introduction
 
-Different [graph families](https://en.wikipedia.org/wiki/List_of_graphs) are tested with the algorithm. The families are listed here :
+While the best deterministic algorithm to solve the minimum cut problem runs in $\mathcal{O}(nm+n^2\log{n})$ \cite{stoer-wagner}, the use of randomized methods can speed things up and find a minimum cut with high probability in only $\mathcal{O}(n^2 \log{n})$.\\
+The goal of this project is to experimentally verify the success probability of the Contraction Algorithm and the FastCut Algorithm. Then the theoretical time complexity of both algorithms will be verified.
 
-- Barbell graphs : To see how the algorithm handles bottleneck graphs
-- Random graphs : Generated with Erdos Renyi model
-- Complete graphs : Graphs where every vertices are connected to each other
-- 
+## Mincut
 
-### Sources
+Let $G( V, E)$ be an undirected multigraph with $n$ vertices and $m$ edges. A multigraph is permitted more than one edge between any given pair of vertices. A cut in $G$ is a partition of the vertices $V = (C, \bar{C})$ into two non-empty sets ; we refer to this as the cut $C$ with the understanding that $\bar{C}$ is $V$\textbackslash$C$.
+The value or size of a cut C is the number of edges crossing the cut, i.e.,
+edges with one end-point in each of the two sets $C$ and $\bar{C}$. A multiple edge will contribute its multiplicity to the value of the cut. A min-cut is a cut of minimum value; the min-cut problem is that of finding a min-cut in an input graph $G$
 
-The graph implementation in C++ comes from [this site](https://www.geeksforgeeks.org/implementation-of-graph-in-cpp/)
+## How to use ?
 
-Different datasets :
-[Konect](http://konect.cc/)
-[SNAP](https://snap.stanford.edu/data/)
+Type in your terminal at the root of the project:
 
-To generate graphs in python with the [NetworkX library](https://networkx.org/)
+```bash
+make
+```
+To compile and run every tests.
 
-Kargers algorithm on [this site](https://en.wikipedia.org/wiki/Karger%27s_algorithm)
+Then use the python files in the `analyze` folder to generate the plots.

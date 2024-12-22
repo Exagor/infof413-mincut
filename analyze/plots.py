@@ -16,7 +16,7 @@ def plot_time_complexity_fast(dfs:list[pd.DataFrame], graph_families:list[str], 
     # generate x and y values for n^2 log n
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
     y_values = x_values**2 * np.log(x_values)
-    plt.plot(x_values, y_values/50, label=r'$\frac{1}{50}n^2 \log{n}$', color='red', linestyle="--")
+    plt.plot(x_values, y_values/100, label=r'$\frac{1}{100}n^2 \log{n}$', color='red', linestyle="--")
 
     plt.xlabel('Number of vertices (n)')
     plt.ylabel('Time (ms)')
@@ -38,7 +38,7 @@ def plot_time_complexity_contract(dfs:list[pd.DataFrame], graph_families:list[st
     # generate x and y values for n^2
     x_values = np.linspace(min(df['size']), max(df['size']), 100)
     y_values = x_values**2
-    plt.plot(x_values, y_values/500, label=r'$\frac{1}{500}n^2$', color='red', linestyle="--")
+    plt.plot(x_values, y_values/800, label=r'$\frac{1}{800}n^2$', color='red', linestyle="--")
 
     plt.xlabel('Number of vertices (n)')
     plt.ylabel('Time (ms)')
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     # plot_graphs(10)
 
     #part with the budget time
-    time_budget = 2000 #in milliseconds
+    time_budget = 5000 #in milliseconds
     results_filename = [f"results/barbell_graph_{time_budget}.csv",
                         f"results/complete_graph_{time_budget}.csv",
                         f"results/random_graph_{time_budget}.csv",
