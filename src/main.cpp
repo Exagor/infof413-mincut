@@ -83,7 +83,7 @@ void experimentsFixedTime(int vertices, string filename, double timeBudget=0.5){
 
 int main(int argc, char* argv[]) {
     int iterMax = 30;
-    double timeBudget = 2; //in seconds
+    double timeBudget = 5; //in seconds
     srand(42); //set the seed for the random number generator
     vector<string> filenames = {"random_graph_",
                                 "random_weighted_graph_",
@@ -102,7 +102,7 @@ int main(int argc, char* argv[]) {
         for (int vertices: verticesVector){
             // create the right filename
             string filename = "graph_data/" + filenameOG + to_string(vertices) + "_matrix.txt";
-            // experimentsFixedIter(vertices, filename, iterMax);
+            experimentsFixedIter(vertices, filename, iterMax);
             experimentsFixedTime(vertices, filename, timeBudget);
         }
     }
