@@ -17,7 +17,7 @@ for name in file_names:
     create_csv_file(f"results/{name}.csv", column_names)
 
 # init or empty the test files for fixed time budget
-time_budgets = [500, 1000, 2000]
+time_budgets = [1000, 2000, 5000]
 column_names = ['family','size','algo','mincut','time','success']
 for budget in time_budgets:
     for name in file_names:
