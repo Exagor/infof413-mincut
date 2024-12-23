@@ -4,7 +4,7 @@ Alexandre Achten, December 2024
 
 ## Introduction
 
-While the best deterministic algorithm to solve the minimum cut problem runs in $\mathcal{O}(nm+n^2\log{n})$ \cite{stoer-wagner}, the use of randomized methods can speed things up and find a minimum cut with high probability in only $\mathcal{O}(n^2 \log{n})$.\\
+While the best deterministic algorithm to solve the minimum cut problem runs in $\mathcal{O}(nm+n^2\log{n})$ \cite{stoer-wagner}, the use of randomized methods can speed things up and find a minimum cut with high probability in only $\mathcal{O}(n^2 \log{n})$.The algorithms will be tested over different graph families\\
 The goal of this project is to experimentally verify the success probability of the Contraction Algorithm and the FastCut Algorithm. Then the theoretical time complexity of both algorithms will be verified.
 
 ## Mincut

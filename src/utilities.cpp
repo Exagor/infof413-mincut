@@ -130,6 +130,4 @@ void writeResults2(const string& filename, int size, const string& algoName, int
     } else {
         cerr << "Unable to open file: " << "results/" + family + ".csv" << endl;
     }
-
-
 }
